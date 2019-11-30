@@ -1,0 +1,13 @@
+add 100
+brn 10
+add 102
+add 102
+add 102
+add 102
+st 104
+ld 106
+add 102
+st 108
+const -2 100
+const 2 102
+const 100 106
