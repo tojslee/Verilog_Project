@@ -1,0 +1,9 @@
+# Reading C:/altera/13.0/modelsim_ase/tcl/vsim/pref.tcl 
+# error: Layout::Clairvoyance can't read "map(?)": no such element in array
+# can't read "map(?)": no such element in array
+#     while executing
+# "Layout::Clairvoyance"
+# OpenFile C:/Users/tÀ/Desktop/2019-2/|¬Œ\$Ä/Project2/final_project_template/SAM.v 
+ 
+v 
+ 
