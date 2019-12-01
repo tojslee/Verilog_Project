@@ -16,4 +16,16 @@ module controller (
 
   // TODO: write codes to implement controller in lecture note, page 59
   
+  assign bus_controller = micro_instructions[21:0];
+  assign muxout[1] = micro_instructions[39] ? IR15 : wait_;
+  assign muxout[0] = micro_instructions[38] ? IR14 : AC15;
+  always @ (micro_instructions[37:22] or muxout) begin
+    case(muxout)
+      2'b00 : next_state = micro_instructions[37:34];
+      2'b01 : next_state = micro_instructions[33:30];
+      2'b10 : next_state = micro_instructions[29:26];
+      2'b11 : next_state = micro_instructions[25:22];
+    endcase
+  end
+  
 endmodule
