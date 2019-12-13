@@ -1,4 +1,3 @@
-
 module controller (
   input clk,
   input wait_, IR15, AC15, IR14,
@@ -15,7 +14,7 @@ module controller (
   always @ (posedge clk) state = next_state;
   
   initial begin
-    state = 0;
+   state = 0;
   end
 
   // TODO: write codes to implement controller in lecture note, page 59

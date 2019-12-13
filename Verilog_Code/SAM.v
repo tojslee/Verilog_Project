@@ -40,6 +40,10 @@ module SAM();
   end
 
     always @ ( negedge clk ) begin
+    if (b[5]) begin
+      assign PC = PC + 2'b10;
+    end
+    
      if (b[21]) begin
       assign ABUS = PC;
     end
@@ -95,7 +99,7 @@ module SAM();
     end
     
     if (b[9]) begin
-      assign MBR = DATA_BUS;
+      assign MBR = data_bus_t;
     end
     
     if (b[8]) begin
@@ -108,10 +112,6 @@ module SAM();
     
     if (b[6]) begin
       assign PC = 0;
-    end
-    
-    if (b[5]) begin
-      assign PC = PC + 2'b10;
     end
     
     if (b[4]) begin
@@ -143,5 +143,4 @@ module SAM();
   // TODO: refer to lecture note, page 8 and write additional code here
   
 endmodule
-
 
