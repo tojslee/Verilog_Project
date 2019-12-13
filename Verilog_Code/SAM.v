@@ -49,20 +49,24 @@ module SAM();
       PC = PC + 2'b10;
     end
     
-    if (b[20]) begin
-      ABUS = IR;
-    end
-    
     if (b[10]) begin
       MAR = ABUS;
     end
     
-    if (b[19]) begin
-      ABUS = MBR;
+    if (b[9]) begin
+      MBR = data_bus_t;
     end
     
-    if (b[18]) begin
-      AC = RBUS;
+    if (b[7]) begin
+      MBUS = MBR;
+    end
+    
+    if (b[20]) begin
+      ABUS = IR;
+    end
+    
+    if (b[19]) begin
+      ABUS = MBR;
     end
     
     if (b[17]) begin
@@ -87,6 +91,14 @@ module SAM();
       ALU_PASS_B = 0;
     end
     
+    if (b[0]) begin
+      RBUS = ALU_RESULT;
+    end
+    
+    if (b[18]) begin
+      AC = RBUS;
+    end
+    
     if (b[13]) begin
       ADDRESS_BUS = MAR;
     end
@@ -97,27 +109,6 @@ module SAM();
     
     if (b[11]) begin
       IR = ABUS;
-    end
-    
-    if (b[9]) begin
-      MBR = data_bus_t;
-    end
-    
-    if (b[8]) begin
-      MBR = RBUS;
-    end
-    
-    if (b[7]) begin
-      MBUS = MBR;
-    end
-    
-    if (b[6]) begin
-      PC = 0;
-    end
-    
-    
-    if (b[4]) begin
-      PC = ABUS;
     end
     
     if (b[3]) begin
@@ -134,13 +125,22 @@ module SAM();
       REQUEST = 0;
     end
     
+    if (b[8]) begin
+      MBR = RBUS;
+    end
+    
+    if (b[6]) begin
+      PC = 0;
+    end
+    
+    if (b[4]) begin
+      PC = ABUS;
+    end
+    
     if (b[1]) begin
       RBUS = AC;
     end
     
-    if (b[0]) begin
-      RBUS = ALU_RESULT;
-    end
     // TODO: refer to lecture note, page 46
 /* Example 1. clk-synchrinized implementation
     if		(b[21]) ABUS = PC;
