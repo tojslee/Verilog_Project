@@ -39,7 +39,7 @@ module SAM();
     else if (ALU_PASS_B) ALU_RESULT = ALU_B;
   end
 
-    always @ ( negedge clk ) begin
+ always @ ( negedge clk ) begin
     
     if (b[21]) begin
       ABUS = PC;
@@ -91,14 +91,6 @@ module SAM();
       ALU_PASS_B = 0;
     end
     
-    if (b[0]) begin
-      RBUS = ALU_RESULT;
-    end
-    
-    if (b[18]) begin
-      AC = RBUS;
-    end
-    
     if (b[13]) begin
       ADDRESS_BUS = MAR;
     end
@@ -148,6 +140,19 @@ module SAM();
     if		(b[19]) ABUS = MBR;
 */
   end
+  
+  always @ (negedge clk or ALU_RESULT) begin
+    if (b[0]) begin
+      RBUS = ALU_RESULT;
+    end
+  end
+  
+  always @ (negedge clk or RBUS) begin
+    if (b[18]) begin
+      AC = RBUS;
+    end
+  end
+
   // TODO: refer to lecture note, page 8 and write additional code here
   
 endmodule
